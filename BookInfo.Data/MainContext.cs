@@ -1,4 +1,5 @@
 ﻿using BookInfo.Core.Models;
+using BookInfo.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace BookInfo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new BookConfiguration());
+            modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+
         }
     }
 
