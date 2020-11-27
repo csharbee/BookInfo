@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookInfo.Core.UnitOfWorks
+namespace BookInfo.Core
 {
     public interface IUnitOfWork
     {
