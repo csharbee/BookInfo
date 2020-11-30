@@ -12,7 +12,7 @@ namespace BookInfo.Service.Services
     public class Service<T> : IService<T> where T : class
     {
         public readonly IUnitOfWork _unitOfWork;
-        private readonly IRepository<T> _repository;
+        public readonly IRepository<T> _repository;
         public Service(IUnitOfWork unitOfWork, IRepository<T> repository)
         {
             _unitOfWork = unitOfWork;
@@ -23,7 +23,7 @@ namespace BookInfo.Service.Services
         {
             if (Entity == null)
             {
-                throw new Exception("Book Entity is null!");
+                throw new Exception("Entity is null!");
             }
             try
             {
@@ -40,7 +40,7 @@ namespace BookInfo.Service.Services
         {
             if (Entities == null)
             {
-                throw new Exception("Book Entity is null!");
+                throw new Exception("Entity is null!");
             }
             try
             {
@@ -57,7 +57,7 @@ namespace BookInfo.Service.Services
         {
             if (Entity == null)
             {
-                throw new Exception("Book Entity is null!");
+                throw new Exception("Entity is null!");
             }
             try
             {
@@ -74,7 +74,7 @@ namespace BookInfo.Service.Services
         {
             if (Entities == null)
             {
-                throw new Exception("Book Entity is null!");
+                throw new Exception("Entity is null!");
             }
             try
             {

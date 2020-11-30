@@ -14,7 +14,7 @@ namespace BookInfo.Data
 
         private BookRepository _bookRepository;
         private AuthorRepository _authorRepository;
-        public IRepository BookRepository => _bookRepository = _bookRepository ?? new BookRepository(_mainContext);
+        public IBookRepository BookRepository => _bookRepository = _bookRepository ?? new BookRepository(_mainContext);
         public IAuthorRepository AuthorRepository => _authorRepository = _authorRepository ?? new AuthorRepository(_mainContext);
 
         public UnitOfWork(MainContext mainContext)

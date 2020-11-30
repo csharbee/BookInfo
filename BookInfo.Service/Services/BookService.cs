@@ -15,5 +15,9 @@ namespace BookInfo.Service.Services
         public BookService(IUnitOfWork unitOfWork, IRepository<Book> repository) : base(unitOfWork, repository)
         {
         }
+
+        public void TestBookService()
+        {
+        }
     }
 }

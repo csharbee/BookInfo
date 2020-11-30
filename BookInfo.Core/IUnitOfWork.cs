@@ -8,7 +8,7 @@ namespace BookInfo.Core
 {
     public interface IUnitOfWork
     {
-        IRepository BookRepository { get; }
+        IBookRepository BookRepository { get; }
         IAuthorRepository AuthorRepository { get; }
         Task CommitAsync();
         void Commit();
