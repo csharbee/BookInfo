@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BookInfo.Core.Repositories
 {
-    public interface IBookRepository : IRepository<Book>
+    public interface IRepository : IRepository<Book>
     {
     }
 }
