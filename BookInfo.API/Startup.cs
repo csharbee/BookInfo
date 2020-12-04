@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookInfo.Core;
+using BookInfo.Core.Repositories;
+using BookInfo.Core.Services;
 using BookInfo.Data;
+using BookInfo.Data.Repositories;
+using BookInfo.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +39,11 @@ namespace BookInfo.API
                      o.MigrationsAssembly("BookInfo.Data");
                  });
             });
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IAuthorService, AuthorService>();
             services.AddControllers();
         }
 
