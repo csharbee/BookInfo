@@ -15,9 +15,9 @@ namespace BookInfo.Service.Services
         {
         }
 
-        public Task<IEnumerable<Author>> GetAuthorsWithBooks(int id)
+        public Author GetAuthorsWithBooks(int id)
         {
-            throw new NotImplementedException();
+            return _unitOfWork.AuthorRepository.GetWithBooks(id);
         }
     }
 }

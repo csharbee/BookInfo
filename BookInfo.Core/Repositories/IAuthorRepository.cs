@@ -7,5 +7,6 @@ namespace BookInfo.Core.Repositories
 {
     public interface IAuthorRepository : IRepository<Author>
     {
+        Author GetWithBooks(int id);
     }
 }

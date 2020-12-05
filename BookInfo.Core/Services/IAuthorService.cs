@@ -9,6 +9,6 @@ namespace BookInfo.Core.Services
 {
     public interface IAuthorService : IService<Author>
     {
-        Task<IEnumerable<Author>> GetAuthorsWithBooks(int id);
+        Author GetAuthorsWithBooks(int id);
     }
 }
