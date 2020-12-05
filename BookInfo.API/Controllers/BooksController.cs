@@ -11,10 +11,10 @@ namespace BookInfo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookController : ControllerBase
+    public class BooksController : ControllerBase
     {
         private IBookService _bookService;
-        public BookController(IBookService bookService)
+        public BooksController(IBookService bookService)
         {
             _bookService = bookService;
         }
