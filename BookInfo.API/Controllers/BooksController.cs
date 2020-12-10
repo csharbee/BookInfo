@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookInfo.API.Filters;
 using BookInfo.Core.Models;
 using BookInfo.Core.Services;
 using Microsoft.AspNetCore.Http;
@@ -24,12 +25,14 @@ namespace BookInfo.API.Controllers
             var books = await _bookService.GetAllAsync();
             return Ok(books);
         }
+        [ServiceFilter(typeof(BookNotFoundFilter))]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var book = await _bookService.GetByIdAsync(id);
             return Ok(book);
         }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Book book)
         {

@@ -21,94 +21,36 @@ namespace BookInfo.Service.Services
 
         public async Task AddAsync(T Entity)
         {
-            if (Entity == null)
-            {
-                throw new Exception("Entity is null!");
-            }
-            try
-            {
-                await _repository.AddAsync(Entity);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"There is an error. Message: {ex.Message}");
-            }
+            await _repository.AddAsync(Entity);
             await _unitOfWork.CommitAsync();
         }
 
         public async Task AddRangeAsync(IEnumerable<T> Entities)
         {
-            if (Entities == null)
-            {
-                throw new Exception("Entity is null!");
-            }
-            try
-            {
-                await _repository.AddRangeAsync(Entities);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"There is an error. Message: {ex.Message}");
-            }
+            await _repository.AddRangeAsync(Entities);
             await _unitOfWork.CommitAsync();
         }
 
         public void Delete(T Entity)
         {
-            if (Entity == null)
-            {
-                throw new Exception("Entity is null!");
-            }
-            try
-            {
-                _repository.Delete(Entity);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"An error occured when object delete. Error Message: {ex.Message}");
-            }
+            _repository.Delete(Entity);
             _unitOfWork.Commit();
         }
 
         public void DeleteRange(IEnumerable<T> Entities)
         {
-            if (Entities == null)
-            {
-                throw new Exception("Entity is null!");
-            }
-            try
-            {
-                _repository.DeleteRange(Entities);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"An error occured when object delete. Error Message: {ex.Message}");
-            }
+            _repository.DeleteRange(Entities);
             _unitOfWork.Commit();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            try
-            {
-                return await _repository.GetAllAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error Message: {ex.Message}");
-            }
+            return await _repository.GetAllAsync();
         }
 
         public async Task<T> GetByIdAsync(int Id)
         {
-            try
-            {
-                return await _repository.GetByIdAsync(Id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error Message: {ex.Message}");
-            }
+            return await _repository.GetByIdAsync(Id);
         }
 
         public void ServiceTest()
@@ -118,30 +60,12 @@ namespace BookInfo.Service.Services
 
         public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
         {
-            try
-            {
-                return await _repository.SingleOrDefaultAsync(predicate);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error Message: {ex.Message}");
-            }
+            return await _repository.SingleOrDefaultAsync(predicate);
         }
 
         public void Update(T Entity)
         {
-            if (Entity == null)
-            {
-                throw new NullReferenceException();
-            }
-            try
-            {
-                _repository.Update(Entity);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error Message: {ex.Message}");
-            }
+            _repository.Update(Entity);
             _unitOfWork.Commit();
         }
     }
