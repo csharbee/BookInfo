@@ -11,7 +11,7 @@ namespace BookInfo.API.Filters
 {
     public class ValidationFilter : ActionFilterAttribute
     {
-        public override void OnActionExecuted(ActionExecutedContext context)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
             if (!context.ModelState.IsValid)
             {

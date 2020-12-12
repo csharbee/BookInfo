@@ -36,10 +36,6 @@ namespace BookInfo.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Book book)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
             await _bookService.AddAsync(book);
             return Created("", book);
         }
