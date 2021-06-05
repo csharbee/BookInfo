@@ -1,4 +1,5 @@
-﻿using BookInfo.Core.Repositories;
+﻿using BookInfo.Core.Models;
+using BookInfo.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BookInfo.Core
 {
     public interface IUnitOfWork
     {
-        IBookRepository BookRepository { get; }
+        IRepository<Book> BookRepository { get; }
         IAuthorRepository AuthorRepository { get; }
         Task CommitAsync();
         void Commit();

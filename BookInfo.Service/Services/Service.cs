@@ -53,11 +53,6 @@ namespace BookInfo.Service.Services
             return await _repository.GetByIdAsync(Id);
         }
 
-        public void ServiceTest()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<T> SingleOrDefaultAsync(Expression<Func<T, bool>> predicate)
         {
             return await _repository.SingleOrDefaultAsync(predicate);

@@ -1,4 +1,5 @@
 ﻿using BookInfo.Core;
+using BookInfo.Core.Models;
 using BookInfo.Core.Repositories;
 using BookInfo.Data.Repositories;
 using System;
@@ -12,9 +13,9 @@ namespace BookInfo.Data
     {
         private readonly MainContext _mainContext;
 
-        private BookRepository _bookRepository;
+        private Repository<Book> _bookRepository;
         private AuthorRepository _authorRepository;
-        public IBookRepository BookRepository => _bookRepository = _bookRepository ?? new BookRepository(_mainContext);
+        public IRepository<Book> BookRepository => _bookRepository = _bookRepository ?? new Repository<Book>(_mainContext);
         public IAuthorRepository AuthorRepository => _authorRepository = _authorRepository ?? new AuthorRepository(_mainContext);
 
         public UnitOfWork(MainContext mainContext)

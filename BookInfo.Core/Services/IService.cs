@@ -17,6 +17,5 @@ namespace BookInfo.Core.Services
         void Delete(T Entity);
         void DeleteRange(IEnumerable<T> Entities);
         void Update(T Entity);
-        void ServiceTest();
     }
 }
