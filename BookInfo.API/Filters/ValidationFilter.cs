@@ -14,15 +14,15 @@ namespace BookInfo.API.Filters
         {
             if (!context.ModelState.IsValid)
             {
-                ErrorDto errorDto = new ErrorDto();
-                errorDto.Status = HttpStatusCode.BadRequest;
+                var responseDto = new ResponseDto();
                 IEnumerable<ModelError> modelErrors = context.ModelState.Values.SelectMany(m => m.Errors);
                 modelErrors.ToList().ForEach(m =>
                 {
-                    errorDto.Errors.Add(m.ErrorMessage);
+                    responseDto.Errors.Add(m.ErrorMessage);
                 });
-
-                context.Result = new BadRequestObjectResult(errorDto);
+                responseDto.Success = false;
+                responseDto.Message = "Not Valid Operation Sended!";
+                context.Result = new BadRequestObjectResult(responseDto);
             }
         }
     }

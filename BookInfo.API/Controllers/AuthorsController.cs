@@ -39,18 +39,12 @@ namespace BookInfo.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Author author)
         {
-            if (!ModelState.IsValid) return BadRequest();
-
             await _authorService.AddAsync(author);
-            return Created("", author);
+            return Created("Author Added", null, author);
         }
         [HttpPut]
         public IActionResult Update([FromBody] Author author)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
             _authorService.Update(author);
             return NoContent();
         }

@@ -25,9 +25,10 @@ namespace BookInfo.API.Filters
             }
             else
             {
-                ErrorDto errorDto = new ErrorDto();
-                errorDto.Status = HttpStatusCode.NotFound;
-                errorDto.Errors.Add($"There is no book with {id}");
+                var errorDto = new ResponseDto();
+                errorDto.Success = false;
+                errorDto.Message = "Not Found Book";
+                errorDto.InternalMessage = $"Not Found Book This Id: {id}";
                 context.Result = new NotFoundObjectResult(errorDto);
             }
         }

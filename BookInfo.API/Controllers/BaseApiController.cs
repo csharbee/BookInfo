@@ -49,23 +49,6 @@ namespace BookInfo.API.Controllers
         }
 
         [NonAction]
-        protected IActionResult NoContent<T>(string message, string internalMessage, T data)
-        {
-            return NoContent(new ResponseDto<T>
-            {
-                Success = true,
-                Message = message,
-                InternalMessage = internalMessage,
-                Data = data
-            });
-        }
-
-        [NonAction]
-        protected IActionResult NoContent<T>(ResponseDto<T> data)
-        {
-            return StatusCode((int)HttpStatusCode.NoContent, data);
-        }
-        [NonAction]
         protected IActionResult NotFound<T>(string message, string internalMessage, T data)
         {
             return NotFound(new ResponseDto<T>

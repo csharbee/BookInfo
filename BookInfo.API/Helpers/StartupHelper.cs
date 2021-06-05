@@ -39,15 +39,12 @@ namespace BookInfo.API.Helpers
 
                     if (errorFeature != null)
                     {
+                        var errorResponse = new ResponseDto();
                         var ex = errorFeature.Error;
-
-                        ErrorDto errorDto = new ErrorDto();
-                        errorDto.Status = HttpStatusCode.InternalServerError;
-                        errorDto.Errors.Add(ex.Message);
-
-                        await context.Response.WriteAsync(JsonConvert.SerializeObject(errorDto));
+                        errorResponse.Errors.Add(ex.Message);
+                        errorResponse.Success = false;
+                        await context.Response.WriteAsync(JsonConvert.SerializeObject(errorResponse));
                     }
-
                 });
             });
         }
