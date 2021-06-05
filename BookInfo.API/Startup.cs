@@ -96,7 +96,10 @@ namespace BookInfo.API
 
             );
             app.UseHttpsRedirection();
-
+            app.UseCors(builder => builder
+                    .WithOrigins("http://localhost:1234")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
             app.UseRouting();
 
             app.UseAuthorization();

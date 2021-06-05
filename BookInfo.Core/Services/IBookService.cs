@@ -8,6 +8,5 @@ namespace BookInfo.Core.Services
 {
     public interface IBookService : IService<Book>
     {
-        void TestBookService();
     }
 }
