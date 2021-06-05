@@ -22,7 +22,7 @@ namespace BookInfo.API
         {
             services.AddDbContext<MainContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("BookInfoConString"), o =>
+                options.UseNpgsql(Configuration["ConnectionString:BookInfoConString"].ToString(), o =>
                 {
                     o.MigrationsAssembly("BookInfo.Data");
                 });

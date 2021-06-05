@@ -11,7 +11,7 @@ namespace BookInfo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorsController : ControllerBase
+    public class AuthorsController : BaseApiController
     {
         private readonly IAuthorService _authorService;
         public AuthorsController(IAuthorService authorService)
@@ -22,27 +22,25 @@ namespace BookInfo.API.Controllers
         public async Task<IActionResult> GetAll()
         {
             var authors = await _authorService.GetAllAsync();
-            return Ok(authors);
+            return Success("get all authors", null, authors);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var author = await _authorService.GetByIdAsync(id);
-            return Ok(author);
+            return Success($"get author by id: {id}", null, author);
         }
         [HttpGet("{id}/books")]
         public IActionResult GetWithBooks(int id)
         {
             var author = _authorService.GetAuthorsWithBooks(id);
-            return Ok(author);
+            return Success($"get author by id: {id} with books", null, author);
         }
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Author author)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
+            if (!ModelState.IsValid) return BadRequest();
+
             await _authorService.AddAsync(author);
             return Created("", author);
         }
