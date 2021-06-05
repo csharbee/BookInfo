@@ -5,13 +5,11 @@ using System.Text;
 
 namespace BookInfo.Core.Models
 {
-    public class Book
+    public class Book : BaseModel
     {
-        public int Id { get; set; }
-        [Required(ErrorMessage ="{0} Alanı Gereklidir!")]
-        public string Name { get; set; }
         public int Page { get; set; }
-        public bool IsDeleted { get; set; }
+        public string Abstract { get; set; }
+        public string Genre { get; set; }
         public int AuthorId { get; set; }
         public virtual Author Author { get; set; }
     }

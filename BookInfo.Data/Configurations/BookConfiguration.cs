@@ -14,6 +14,9 @@ namespace BookInfo.Data.Configurations
             builder.HasKey(m => m.Id);
             builder.Property(m => m.Id).UseIdentityColumn();
             builder.Property(m => m.Name).IsRequired().HasMaxLength(200);
+            builder.Property(m => m.Genre).IsRequired().HasMaxLength(50);
+            builder.Property(m => m.Abstract);
+            builder.Property(m => m.Page).IsRequired();
             builder.ToTable("Books");
         }
     }

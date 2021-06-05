@@ -2,10 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 
 namespace BookInfo.API.Filters
 {
@@ -16,7 +15,7 @@ namespace BookInfo.API.Filters
             if (!context.ModelState.IsValid)
             {
                 ErrorDto errorDto = new ErrorDto();
-                errorDto.Status = 400;
+                errorDto.Status = HttpStatusCode.BadRequest;
                 IEnumerable<ModelError> modelErrors = context.ModelState.Values.SelectMany(m => m.Errors);
                 modelErrors.ToList().ForEach(m =>
                 {

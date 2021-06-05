@@ -2,9 +2,8 @@
 using BookInfo.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace BookInfo.API.Filters
@@ -27,7 +26,7 @@ namespace BookInfo.API.Filters
             else
             {
                 ErrorDto errorDto = new ErrorDto();
-                errorDto.Status = 404;
+                errorDto.Status = HttpStatusCode.NotFound;
                 errorDto.Errors.Add($"There is no book with {id}");
                 context.Result = new NotFoundObjectResult(errorDto);
             }
