@@ -12,7 +12,7 @@ namespace BookInfo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BooksController : ControllerBase
+    public class BooksController : BaseApiController
     {
         private IBookService _bookService;
         public BooksController(IBookService bookService)
@@ -23,21 +23,21 @@ namespace BookInfo.API.Controllers
         public async Task<IActionResult> GetAll()
         {
             var books = await _bookService.GetAllAsync();
-            return Ok(books);
+            return Success("Get All Books", null, books);
         }
         [ServiceFilter(typeof(BookNotFoundFilter))]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var book = await _bookService.GetByIdAsync(id);
-            return Ok(book);
+            return Success("Get The Book", null, book);
         }
 
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] Book book)
         {
             await _bookService.AddAsync(book);
-            return Created("", book);
+            return Created("Book Added", null, book);
         }
         [HttpPut]
         public IActionResult Update([FromBody] Book book)
